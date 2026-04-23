@@ -1,0 +1,150 @@
+<div class="dashboard">
+  <!-- Header -->
+  <div class="dash-header">
+    <div class="container">
+      <div class="dash-title-row">
+        <div>
+          <h1>Dashboard Institucional</h1>
+          <p>Métricas de bienestar estudiantil · Datos 100% anónimos · Actualizado hoy</p>
+        </div>
+        <div class="header-badges">
+          <span class="hbadge green">🟢 Sistema activo</span>
+          <span class="hbadge">📅 Semana 8 · 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- KPI Grid -->
+    <div class="kpi-grid" *ngIf="kpis">
+      <div class="kpi-card kpi-main">
+        <div class="kpi-icon">📉</div>
+        <div class="kpi-num" style="color:var(--sage)">-{{ kpis.stressReduction }}%</div>
+        <div class="kpi-label">Reducción de estrés</div>
+        <div class="kpi-sub">desde el inicio del programa</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">👥</div>
+        <div class="kpi-num">{{ kpis.activeUsers | number }}</div>
+        <div class="kpi-label">Usuarios activos</div>
+        <div class="kpi-sub">esta semana</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💬</div>
+        <div class="kpi-num">{{ kpis.sessionsThisWeek }}</div>
+        <div class="kpi-label">Sesiones</div>
+        <div class="kpi-sub">esta semana</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🔄</div>
+        <div class="kpi-num">{{ kpis.retentionRate }}%</div>
+        <div class="kpi-label">Retención</div>
+        <div class="kpi-sub">usuarios que vuelven</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🩺</div>
+        <div class="kpi-num">{{ kpis.professionalReferrals }}</div>
+        <div class="kpi-label">Derivaciones</div>
+        <div class="kpi-sub">a profesionales</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⏱️</div>
+        <div class="kpi-num">{{ kpis.avgSessionMinutes }} min</div>
+        <div class="kpi-label">Duración media</div>
+        <div class="kpi-sub">por sesión</div>
+      </div>
+    </div>
+
+    <!-- Charts row -->
+    <div class="charts-row">
+      <!-- Stress trend chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Tendencia de Estrés Institucional</h3>
+            <p>Huella de estrés agregada · 8 semanas</p>
+          </div>
+          <span class="trend-badge">↓ Mejorando</span>
+        </div>
+        <div class="bar-chart">
+          <div *ngFor="let d of stressTrend" class="bar-col">
+            <div class="bar-label-top">{{ d.value }}</div>
+            <div class="bar-wrapper">
+              <div class="bar-fill stress" [style.height]="getBarWidth(d.value, maxStress)"></div>
+            </div>
+            <div class="bar-label-bottom">{{ d.week }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sessions chart -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <h3>Sesiones Semanales</h3>
+            <p>Uso de la plataforma · 8 semanas</p>
+          </div>
+          <span class="trend-badge" style="background:var(--blue-sl);color:var(--blue-s)">↑ Creciendo</span>
+        </div>
+        <div class="bar-chart">
+          <div *ngFor="let d of stressTrend" class="bar-col">
+            <div class="bar-label-top">{{ d.sessions }}</div>
+            <div class="bar-wrapper">
+              <div class="bar-fill sessions" [style.height]="getBarWidth(d.sessions, maxSessions)"></div>
+            </div>
+            <div class="bar-label-bottom">{{ d.week }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departments table -->
+    <div class="dept-card">
+      <div class="chart-header">
+        <div>
+          <h3>Bienestar por Facultad</h3>
+          <p>Índice de estrés por departamento (menor = mejor)</p>
+        </div>
+      </div>
+      <div class="dept-table">
+        <div class="dept-head">
+          <div>Facultad</div>
+          <div>Estudiantes</div>
+          <div>Índice de estrés</div>
+          <div>Tendencia</div>
+        </div>
+        <div *ngFor="let d of departments" class="dept-row">
+          <div class="dept-name">{{ d.name }}</div>
+          <div class="dept-students">{{ d.students | number }}</div>
+          <div class="dept-bar-wrap">
+            <div class="dept-bar" [style.width]="getBarWidth(d.score, 100)" [style.background]="getStressColor(d.score)"></div>
+            <span>{{ d.score }}</span>
+          </div>
+          <div class="dept-trend" [style.color]="getTrendColor(d.trend)">
+            {{ getTrendIcon(d.trend) }} {{ d.trend === 'down' ? 'Mejorando' : d.trend === 'up' ? 'Empeorando' : 'Estable' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deposit model status -->
+    <div class="deposit-status">
+      <div class="ds-left">
+        <h3>Estado del Modelo de Depósito de Riesgo</h3>
+        <p>Con base en la reducción de estrés actual del <strong>28%</strong>, tu institución aplica para reembolso.</p>
+      </div>
+      <div class="ds-right">
+        <div class="reimb-calc">
+          <div class="reimb-label">Reembolso proyectado</div>
+          <div class="reimb-amount">20%</div>
+          <div class="reimb-sub">de la tarifa anual</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="privacy-disclaimer">
+      🔒 <strong>Todos los datos son anónimos y agregados.</strong> MindSync no puede acceder a conversaciones individuales. Este dashboard solo muestra métricas colectivas de bienestar.
+    </div>
+  </div>
+</div>

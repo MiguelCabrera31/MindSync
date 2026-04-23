@@ -1,0 +1,31 @@
+<nav [class.scrolled]="scrolled()">
+  <div class="nav-inner">
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
+      <div class="nav-mark">🧠</div>
+      <span>MindSync</span>
+    </a>
+
+    <div class="nav-links">
+      <a routerLink="/"             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Inicio</a>
+      <a routerLink="/universidades" routerLinkActive="active">Instituciones</a>
+      <a routerLink="/chat"          routerLinkActive="active">Demo Chat</a>
+      <a routerLink="/dashboard"     routerLinkActive="active">Dashboard</a>
+    </div>
+
+    <div class="nav-actions">
+      <a routerLink="/chat" class="btn btn-primary btn-sm" (click)="closeMenu()">Probar Demo</a>
+      <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" [class.open]="menuOpen()">
+    <a routerLink="/"              (click)="closeMenu()">Inicio</a>
+    <a routerLink="/universidades" (click)="closeMenu()">Para Instituciones</a>
+    <a routerLink="/chat"          (click)="closeMenu()">Demo Chat</a>
+    <a routerLink="/dashboard"     (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/chat" class="btn btn-primary btn-full" (click)="closeMenu()">Probar Demo Gratis</a>
+  </div>
+</nav>

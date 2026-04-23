@@ -1,0 +1,185 @@
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="badge badge-sage hero-badge">
+          <span>🛡️</span> 100% privado · sin servidores · funciona offline
+        </div>
+        <h1>El amigo honesto que <em>siempre estuvo</em> faltando.</h1>
+        <p class="hero-lead">
+          <strong>MindSync no te dirá lo que quieres oír.</strong> Te dirá lo que necesitas escuchar — sin juicios, sin filtros, y sin que nadie más pueda leer lo que escribes.
+        </p>
+        <div class="hero-ctas">
+          <a routerLink="/chat" class="btn btn-primary">Quiero probarlo →</a>
+          <a routerLink="/universidades" class="btn btn-soft">¿Eres institución?</a>
+        </div>
+        <div class="trust-row">
+          <span class="trust-chip">🔒 Sin login de Google</span>
+          <span class="trust-chip">✅ MVP probado</span>
+          <span class="trust-chip">📱 Funciona offline</span>
+        </div>
+      </div>
+
+      <div class="hero-chat">
+        <div class="chat-card">
+          <div class="chat-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="chat-label">MindSync · Privado</span>
+          </div>
+          <div class="chat-msgs">
+            <div class="msg-ai">Hola 👋 No hay prisa. ¿Qué está pasando hoy?</div>
+            <div class="msg-user">Tengo parciales mañana y no puedo concentrarme. Me siento un inútil.</div>
+            <div class="msg-ai">Eso suena agotador. "Inútil" es una etiqueta fuerte — y suele ser falsa. ¿Cuándo fue la última vez que descansaste de verdad?</div>
+            <div class="typing-row">
+              <div class="td"></div><div class="td"></div><div class="td"></div>
+            </div>
+          </div>
+          <div class="chat-input">
+            <span>Escribe lo que sientes…</span>
+            <a routerLink="/chat" class="chat-send">✈</a>
+          </div>
+          <p class="privacy-note">🔒 Solo tú puedes leer esto. Ni nosotros podemos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEMA ═══ -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">La realidad que nadie habla</p>
+      <h2>No estás solo. Los números lo confirman.</h2>
+      <p>La salud mental universitaria está en crisis. El sistema tarda semanas en ayudarte. MindSync está ahí en segundos.</p>
+    </div>
+    <div class="grid-3">
+      <div *ngFor="let s of stats; let i = index" class="stat-card sr card-{{s.color}}">
+        <div class="stat-icon">{{ s.icon }}</div>
+        <div class="stat-num">{{ s.num }}</div>
+        <div class="stat-title">{{ s.label }}</div>
+        <p>{{ s.desc }}</p>
+      </div>
+    </div>
+    <p class="source-note">Fuente: Arias-Coronel et al. (2025) · Defensoría del Pueblo Colombia</p>
+  </div>
+</section>
+
+<!-- ═══ DIFERENCIADOR ═══ -->
+<section class="section diff-section">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow" style="color:rgba(255,255,255,.3)">Por qué somos diferentes</p>
+      <h2 style="color:#fff">No somos un eco de tus deseos. Somos tu espejo.</h2>
+      <p style="color:rgba(255,255,255,.5)">Las otras IAs te dicen lo que quieres oír para que sigas usándolas. MindSync te dice lo que necesitas para que crezcas de verdad.</p>
+    </div>
+    <div class="diff-layout">
+      <div class="diff-pillars sr">
+        <div class="diff-pillar">
+          <div class="pillar-label green">👁 Honestidad radical</div>
+          <p>No validación vacía. Psicología de confrontación constructiva: te pregunta lo incómodo, no lo fácil.</p>
+        </div>
+        <div class="diff-pillar">
+          <div class="pillar-label blue">🔒 Tu IA en tu bolsillo</div>
+          <p>Todo el procesamiento ocurre en tu dispositivo. Sin internet, sin servidores, sin que nadie acceda. Ni nosotros.</p>
+        </div>
+        <div class="diff-pillar">
+          <div class="pillar-label gold">🩺 Sabe cuándo ceder</div>
+          <p>Si detecta señales de crisis real, te conecta con un psicólogo. La IA sabe cuándo hacerse a un lado.</p>
+        </div>
+      </div>
+      <div class="vs-table sr">
+        <div class="vs-head">
+          <div class="vh feat">Característica</div>
+          <div class="vh them">🫠 Otras IAs</div>
+          <div class="vh us">👁 MindSync</div>
+        </div>
+        <div *ngFor="let row of vsRows" class="vs-row">
+          <div class="vc feat">{{ row.feat }}</div>
+          <div class="vc bad">{{ row.them }}</div>
+          <div class="vc good">{{ row.us }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CÓMO FUNCIONA ═══ -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">Así de simple</p>
+      <h2>De "no puedo con todo" a tener claridad. En minutos.</h2>
+    </div>
+    <div class="grid-4">
+      <div *ngFor="let step of steps" class="step-card sr card">
+        <div class="step-ghost">{{ step.num }}</div>
+        <div class="step-icon" [style.background]="step.bg" [style.color]="step.color">{{ step.icon }}</div>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIOS ═══ -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">Lo que dicen quienes lo probaron</p>
+      <h2>Feedback real, de estudiantes reales.</h2>
+    </div>
+    <div class="grid-3">
+      <div *ngFor="let t of testimonials" class="testi-card sr card card-cream">
+        <div class="stars">{{ '★'.repeat(t.stars) }}{{ '☆'.repeat(5 - t.stars) }}</div>
+        <p class="testi-q">{{ t.quote }}</p>
+        <div class="testi-who">
+          <div class="testi-av" [style.background]="t.bg">{{ t.avatar }}</div>
+          <div>
+            <div class="testi-name">{{ t.name }}</div>
+            <div class="testi-role">{{ t.role }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRIVACIDAD ═══ -->
+<section class="privacy-section">
+  <div class="container">
+    <div class="privacy-center sr">
+      <div class="lock-big">🔒</div>
+      <h2>Tu mente es tuya. Punto.</h2>
+      <p>MindSync fue diseñado desde cero para que ni siquiera nosotros podamos leer lo que escribes. Sin excepciones.</p>
+      <div class="priv-chips">
+        <div class="priv-chip">✅ Procesamiento 100% local</div>
+        <div class="priv-chip">✅ Sin login con Google</div>
+        <div class="priv-chip">✅ Cero servidores externos</div>
+        <div class="priv-chip">✅ Funciona sin internet</div>
+        <div class="priv-chip">✅ Datos en tu dispositivo</div>
+        <div class="priv-chip">✅ Open Source</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="cta-card sr">
+      <div class="cta-emoji">👋</div>
+      <h2>¿Listo para un compañero que te diga la verdad?</h2>
+      <p>Déjanos tu correo y te avisamos cuando MindSync esté disponible. Sin spam. Sin trucos.</p>
+      <div class="email-row">
+        <input type="email" [(ngModel)]="email" placeholder="tu@correo.edu.co" (keyup.enter)="submitEmail()">
+        <button class="btn btn-primary" (click)="submitEmail()">Avisarme →</button>
+      </div>
+      <p class="cta-note">🔒 Solo lo usamos para avisarte. No lo compartimos.</p>
+    </div>
+  </div>
+</section>

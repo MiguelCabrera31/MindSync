@@ -1,0 +1,191 @@
+<!-- HERO -->
+<section class="u-hero">
+  <div class="hero-bg-circles">
+    <div class="hbc hbc1"></div>
+    <div class="hbc hbc2"></div>
+  </div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="badge badge-hero">🏛️ Para departamentos de bienestar universitario</div>
+        <h1>Reduce la deserción.<br><em>Protege a tus estudiantes.</em></h1>
+        <p class="hero-lead">
+          MindSync es la primera plataforma de bienestar mental que
+          <strong>te paga por los resultados</strong>, no por el uso.
+          Si la salud de tus estudiantes mejora, te devolvemos parte de tu inversión.
+        </p>
+        <div class="hero-ctas">
+          <a href="#cta" class="btn btn-forest">Agendar demo institucional →</a>
+          <a href="#modelo" class="btn btn-outline">Ver modelo financiero</a>
+        </div>
+      </div>
+      <div class="hero-kpis">
+        <div *ngFor="let k of kpis" class="kpi-card">
+          <div class="kpi-icon" [style.color]="k.color">{{ k.icon }}</div>
+          <div class="kpi-num">{{ k.num }}</div>
+          <div class="kpi-label">{{ k.label }}</div>
+          <div class="kpi-sub">{{ k.sub }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="section" style="background:var(--white)" id="problema">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">El costo real que no aparece en el presupuesto</p>
+      <h2>La salud mental afecta directamente a tu institución.</h2>
+      <p>No es solo un tema humano. Es un problema financiero y de reputación que la mayoría de universidades está ignorando.</p>
+    </div>
+    <div class="prob-layout">
+      <div class="cost-card sr">
+        <h3>❌ El costo de no actuar</h3>
+        <ul>
+          <li *ngFor="let c of costs"><span>✗</span>{{ c }}</li>
+        </ul>
+      </div>
+      <div class="stat-col sr">
+        <div class="stat-row">
+          <div class="stat-big" style="color:var(--blue-s)">1 de 3</div>
+          <p>estudiantes que abandona la universidad cita razones de salud mental como factor determinante.</p>
+        </div>
+        <div class="stat-row">
+          <div class="stat-big" style="color:var(--forest)">94%</div>
+          <p>de universitarios en Bogotá enfrentó al menos 3 barreras para acceder a apoyo psicológico.</p>
+        </div>
+        <div class="stat-row">
+          <div class="stat-big" style="color:var(--amber-s)">15 sem.</div>
+          <p>de espera promedio para una cita psicológica. En crisis, ese tiempo es demasiado largo.</p>
+        </div>
+        <p class="source">Fuente: Arias-Coronel et al. (2025) · Defensoría del Pueblo Colombia</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELO DEPÓSITO -->
+<section class="section" style="background:var(--cream)" id="modelo">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">Modelo financiero</p>
+      <h2>El primer seguro de estabilidad emocional estudiantil.</h2>
+      <p>No cobramos por uso. Cobramos por resultados. Si tus estudiantes están mejor, tú pagas menos.</p>
+    </div>
+    <div class="steps-col">
+      <div *ngFor="let s of steps" class="dep-step sr">
+        <div class="dep-circle" [style.background]="s.color">{{ s.num }}</div>
+        <div class="dep-content">
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.desc }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="reimb-box sr">
+      <h3>¿Por qué este modelo funciona?</h3>
+      <p>Nuestros incentivos están <strong>perfectamente alineados</strong> con los tuyos. Si MindSync funciona, tus estudiantes están mejor y tú recuperas dinero. Si no funciona, nosotros absorbemos el costo de las intervenciones. <strong>Nunca pagas por el fracaso.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="section roi-section">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow" style="color:rgba(255,255,255,.3)">Retorno sobre la inversión</p>
+      <h2 style="color:#fff">Resultados que van al informe de rectoría.</h2>
+      <p style="color:rgba(255,255,255,.5)">Métricas concretas que puedes presentar a directivos y acreditadoras.</p>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-card sr"><span>📉</span><div class="roi-val">↓ Deserción</div><div class="roi-lbl">Reducción medible de abandono por causas de salud mental</div></div>
+      <div class="roi-card sr"><span>⚡</span><div class="roi-val">24/7</div><div class="roi-lbl">Cobertura preventiva sin ampliar tu equipo de psicólogos</div></div>
+      <div class="roi-card sr"><span>🔒</span><div class="roi-val">0 datos</div><div class="roi-lbl">Cero acceso a conversaciones. Ni MindSync, ni la universidad</div></div>
+      <div class="roi-card sr"><span>📊</span><div class="roi-val">Dashboard</div><div class="roi-lbl">Panel de salud colectiva anónima para decisiones institucionales</div></div>
+    </div>
+    <div class="compliance-chips sr">
+      <div class="comp-chip">✅ Datos procesados localmente</div>
+      <div class="comp-chip">✅ Métricas anonimizadas</div>
+      <div class="comp-chip">✅ Sin almacenamiento en nube</div>
+      <div class="comp-chip">✅ Auditable y Open Source</div>
+      <div class="comp-chip">✅ Cumple normativa colombiana</div>
+      <div class="comp-chip">✅ Sin acceso a conversaciones individuales</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" style="background:var(--white)">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">Lo que incluye</p>
+      <h2>Todo lo que necesita tu departamento de bienestar.</h2>
+    </div>
+    <div class="grid-3">
+      <div *ngFor="let f of features" class="feat-card card sr">
+        <div class="feat-icon" [style.background]="f.bg" [style.color]="f.color">{{ f.icon }}</div>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARACIÓN -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-head sr">
+      <p class="eyebrow">Posicionamiento competitivo</p>
+      <h2>MindSync vs. las alternativas del mercado.</h2>
+    </div>
+    <div class="comp-table sr">
+      <div class="comp-head">
+        <div class="ch feat">Criterio</div>
+        <div class="ch ms">MindSync</div>
+        <div class="ch comp">Woebot</div>
+        <div class="ch comp">Headspace</div>
+      </div>
+      <div *ngFor="let r of compRows" class="comp-row">
+        <div class="cc feat">{{ r.feat }}</div>
+        <div class="cc good">{{ r.ms }}</div>
+        <div class="cc bad">{{ r.w }}</div>
+        <div class="cc bad">{{ r.h }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-head sr">
+      <p class="eyebrow" style="color:rgba(255,255,255,.35)">Sin compromiso</p>
+      <h2>¿Tu institución está lista para liderar en bienestar estudiantil?</h2>
+      <p>En 30 minutos te mostramos cómo MindSync puede adaptarse a tu universidad y qué ROI puedes esperar en el primer año.</p>
+    </div>
+    <div class="form-card sr">
+      <div class="form-grid">
+        <div class="field"><label>Nombre completo *</label><input type="text" [(ngModel)]="form.name" placeholder="Ej: María García"></div>
+        <div class="field"><label>Cargo</label><input type="text" [(ngModel)]="form.role" placeholder="Ej: Directora de Bienestar"></div>
+        <div class="field"><label>Institución *</label><input type="text" [(ngModel)]="form.institution" placeholder="Nombre de tu universidad"></div>
+        <div class="field"><label>Correo institucional *</label><input type="email" [(ngModel)]="form.email" placeholder="tu@universidad.edu.co"></div>
+        <div class="field">
+          <label>Nº de estudiantes</label>
+          <select [(ngModel)]="form.size">
+            <option value="">Selecciona</option>
+            <option *ngFor="let o of sizeOptions" [value]="o">{{ o }}</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>¿Cuándo pueden hablar?</label>
+          <select [(ngModel)]="form.timeframe">
+            <option value="">Preferencia</option>
+            <option *ngFor="let o of timeOptions" [value]="o">{{ o }}</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-forest btn-full submit-btn" (click)="submitForm()">Solicitar demo institucional →</button>
+      <p class="form-note">🔒 Información confidencial. Solo la usamos para preparar la demostración personalizada.</p>
+    </div>
+  </div>
+</section>

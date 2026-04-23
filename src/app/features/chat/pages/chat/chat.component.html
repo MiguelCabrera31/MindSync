@@ -1,0 +1,94 @@
+<div class="chat-page">
+  <!-- Sidebar -->
+  <aside class="chat-sidebar">
+    <div class="sidebar-header">
+      <div class="brand">🧠 MindSync</div>
+      <p class="brand-sub">Tu espacio seguro</p>
+    </div>
+    <div class="privacy-card">
+      <div class="priv-icon">🔒</div>
+      <strong>100% Privado</strong>
+      <p>Nadie puede leer esta conversación. Ni nosotros.</p>
+    </div>
+    <div class="risk-indicator">
+      <div class="risk-label">Nivel de riesgo detectado</div>
+      <div class="risk-bar">
+        <div class="risk-fill" [class]="chatService.riskLevel()"></div>
+      </div>
+      <div class="risk-text">{{ chatService.riskLevel() === 'low' ? 'Normal' : chatService.riskLevel() === 'medium' ? 'Moderado' : 'Requiere atención' }}</div>
+    </div>
+    <button class="btn btn-soft btn-sm" (click)="clearChat()" style="margin-top:auto">🗑 Nueva conversación</button>
+  </aside>
+
+  <!-- Chat main -->
+  <div class="chat-main">
+    <!-- Top bar -->
+    <div class="chat-topbar">
+      <div class="topbar-info">
+        <div class="ai-avatar">🧠</div>
+        <div>
+          <div class="ai-name">MindSync IA</div>
+          <div class="ai-status">
+            <span class="status-dot"></span>
+            {{ chatService.isLoading() ? 'Escribiendo...' : 'En línea · Procesando localmente' }}
+          </div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-soft btn-sm" (click)="clearChat()">Nueva sesión</button>
+      </div>
+    </div>
+
+    <!-- Crisis alert -->
+    @if (showCrisisAlert()) {
+      <div class="crisis-alert">
+        <span>🚨</span>
+        <div>
+          <strong>Notamos que puedes necesitar apoyo profesional.</strong>
+          <p>Línea 106 (Colombia) · Disponible 24/7 · Confidencial</p>
+        </div>
+        <button (click)="showCrisisAlert.set(false)">✕</button>
+      </div>
+    }
+
+    <!-- Messages -->
+    <div class="messages" #msgContainer>
+      @for (msg of chatService.messages(); track msg.id) {
+        <div class="msg-wrap" [class.user]="msg.role === 'user'">
+          @if (msg.role === 'assistant') {
+            <div class="msg-avatar">🧠</div>
+          }
+          <div class="msg-bubble" [class.msg-user]="msg.role === 'user'" [class.msg-ai]="msg.role === 'assistant'">
+            {{ msg.content }}
+            <div class="msg-time">{{ msg.timestamp | date:'HH:mm' }}</div>
+          </div>
+        </div>
+      }
+      @if (chatService.isLoading()) {
+        <div class="msg-wrap">
+          <div class="msg-avatar">🧠</div>
+          <div class="msg-ai typing-indicator">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input-area">
+      <div class="input-row">
+        <textarea
+          [(ngModel)]="inputText"
+          (keydown)="onKeydown($event)"
+          placeholder="Escribe lo que sientes… (Enter para enviar)"
+          rows="1"
+          [disabled]="chatService.isLoading()"
+        ></textarea>
+        <button class="send-btn" (click)="sendMessage()" [disabled]="chatService.isLoading() || !inputText.trim()">
+          {{ chatService.isLoading() ? '⏳' : '📤' }}
+        </button>
+      </div>
+      <p class="input-note">🔒 Procesado localmente · MindSync no reemplaza atención profesional</p>
+    </div>
+  </div>
+</div>
