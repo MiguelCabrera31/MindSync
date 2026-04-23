@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build for GitHub Pages
-        run: npx ng build --configuration=ghpages --base-href /MindSync/
+        run: npx ng build --base-href /MindSync/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
